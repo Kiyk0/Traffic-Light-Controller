@@ -14,11 +14,12 @@ parameter
 
 initial begin
     current_state = RED;
-    next_state = RED;
+    next_state = GREEN;
+    light = 0;
 end
 
 // State Transition
-always @(posedge clk or posedge rst) begin
+always @(posedge rst or negedge rst or posedge change or negedge change) begin
     if (rst) begin
         current_state <= RED;         // Reset to RED state
     end
